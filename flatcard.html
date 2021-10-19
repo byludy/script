@@ -673,18 +673,19 @@ art.on('video:canplay', function () {
     addVideos(['<!--FileEncodeUrl-->']);
 <!--IsvideoFileEnd-->
 <!--IsmusicFileStart-->
-(function Music(){
+function Music(m){
 var music = document.getElementById('url').innerHTML;
 var mrlee = music.split('.')[music.split('.').length -2];
 var player = new cplayer({
     element: document.getElementById('music'),
     playlist: [
       {
-        src: '<!--FileDownUrl-->',
+        src: m,
         poster: 'https://cdn.jsdelivr.net/gh/FxckA/script@main/h.gif',
-        name: mrlee,]
-  }
-  )})();
+        name: mrlee,
+  }]
+	    });};
+Music(['<!--FileDownUrl-->']);
 <!--IsmusicFileEnd-->
 <!--IspdfFileStart-->
     pdfjsLib.GlobalWorkerOptions.workerSrc = '//cdn.bootcss.com/pdf.js/2.3.200/pdf.worker.min.js';
