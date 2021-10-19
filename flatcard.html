@@ -675,7 +675,7 @@ art.on('video:canplay', function () {
 <!--IsmusicFileStart-->
 function Music(m){
 var mm = document.getElementById('url').innerHTML;
-var mrlee = mm.split('/')[mm.split('/').length -2];
+var mrlee = mm.split('/')[mm.split('/').length -1];
 var player = new cplayer({
     element: document.getElementById('music'),
     playlist: [
