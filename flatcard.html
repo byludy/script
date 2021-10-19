@@ -666,7 +666,7 @@ icons: {
 		
         });
 art.on('video:canplay', function () {
-    console.info('The player can play');
+    console.info('Happy!');
 });
     }
 }
@@ -674,7 +674,8 @@ art.on('video:canplay', function () {
 <!--IsvideoFileEnd-->
 <!--IsmusicFileStart-->
 function Music(m){
-var mrlee = m.split('/')[m.split('/').length -1];
+var mm = document.getElementById('url').innerHTML;
+var mrlee = mm.split('/')[mm.split('/').length -2];
 var player = new cplayer({
     element: document.getElementById('music'),
     playlist: [
