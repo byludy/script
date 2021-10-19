@@ -611,11 +611,6 @@
         host + '/artplayer/dist/artplayer.js',
         callback
     );
-loadResources(
-        'script',
-        host + '/cplayer/dist/cplayer.min.js',
-        callback
-    );
 }
 
 function createDplayers(videos) {
@@ -677,7 +672,7 @@ art.on('video:canplay', function () {
     addVideos(['<!--FileEncodeUrl-->']);
 <!--IsvideoFileEnd-->
 <!--IsmusicFileStart-->
-function Music(){
+(function Music(){
 var music = document.getElementById('url').innerHTML;
 var mrlee = music.split('.')[music.split('.').length -2];
 var player = new cplayer({
@@ -688,7 +683,7 @@ var player = new cplayer({
         poster: 'https://cdn.jsdelivr.net/gh/FxckA/script@main/h.gif',
         name: mrlee,
     ]
-  });}()
+  })})();
 <!--IsmusicFileEnd-->
 <!--IspdfFileStart-->
     pdfjsLib.GlobalWorkerOptions.workerSrc = '//cdn.bootcss.com/pdf.js/2.3.200/pdf.worker.min.js';
