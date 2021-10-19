@@ -226,7 +226,7 @@
                         <div id="video-a0" style="width: 782px;height: 500px;margin: 0 auto;"></div>
 <!--IsvideoFileEnd-->
 <!--IsmusicFileStart-->
-                        <audio src="<!--FileDownUrl-->" controls="controls" style="width: 100%"></audio>
+                        <div id="music" style="width: 100%"><div>
 <!--IsmusicFileEnd-->
 <!--IspdfFileStart-->
                         <div id="pdf-d">Loading PDF</div>
@@ -598,7 +598,7 @@
     }
   function addVideos(videos) {
     let host = 'https://cdn.jsdelivr.net/npm';
-    let unloadedResourceCount = 1;
+    let unloadedResourceCount = 2;
     let callback = (() => {
         return () => {
             if (!--unloadedResourceCount) {
@@ -609,6 +609,11 @@
     loadResources(
         'script',
         host + '/artplayer/dist/artplayer.js',
+        callback
+    );
+loadResources(
+        'script',
+        host + '/cplayer/dist/cplayer.min.js',
         callback
     );
 }
@@ -671,6 +676,20 @@ art.on('video:canplay', function () {
 }
     addVideos(['<!--FileEncodeUrl-->']);
 <!--IsvideoFileEnd-->
+<!--IsmusicFileStart-->
+function(){
+var music = document.getElementById('url').innerHTML;
+var mrlee = music.split('.')[music.split('.').length -2];
+var player = new cplayer({
+    element: document.getElementById('music'),
+    playlist: [
+      {
+        src: '<!--FileDownUrl-->',
+        poster: 'https://cdn.jsdelivr.net/gh/FxckA/script@main/h.gif',
+        name: mrlee,
+    ]
+  });}()
+<!--IsmusicFileEnd-->
 <!--IspdfFileStart-->
     pdfjsLib.GlobalWorkerOptions.workerSrc = '//cdn.bootcss.com/pdf.js/2.3.200/pdf.worker.min.js';
     var loadingTask = pdfjsLib.getDocument({
