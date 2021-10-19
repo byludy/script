@@ -214,7 +214,7 @@
 <!--GuestUploadEnd-->
 
 <!--IsFileStart-->
-                <div style="margin: 12px 4px 4px;">
+                <div style="margin: 12px 4px 4px;text-align:center">
                     <div style="margin: 0px 24px;display: flex;justify-content: space-between;align-items: center;">
                         <textarea id="url" title="url" rows="1" readonly><!--FileEncodeUrl--></textarea>
                         <a style="min-width: 50px;text-align: right;" href="<!--FileEncodeUrl-->"><ion-icon name="download" style="line-height: 16px;vertical-align: middle;"></ion-icon><!--constStr@Download--></a>
@@ -224,10 +224,10 @@
                         <img src="<!--FileEncodeUrl-->" alt="<!--FileName-->" onload="if (this.offsetWidth>document.getElementById('url').offsetWidth) this.style.width='100%';" />
 <!--IsimgFileEnd-->
 <!--IsvideoFileStart-->
-                        <div id="video-a0" style="width: 782px;height: 500px;margin: 0 auto;"></div>
+                        <div id="video-a0" style="width: 782px;height: 500px;"></div>
 <!--IsvideoFileEnd-->
 <!--IsmusicFileStart-->
-                        <div id="music" style="width: 100%"><div>
+                        <div id="music" style="width: 100%"></div>
 <!--IsmusicFileEnd-->
 <!--IspdfFileStart-->
                         <div id="pdf-d">Loading PDF</div>
@@ -674,8 +674,7 @@ art.on('video:canplay', function () {
 <!--IsvideoFileEnd-->
 <!--IsmusicFileStart-->
 function Music(m){
-var music = document.getElementById('url').innerHTML;
-var mrlee = music.split('.')[music.split('.').length -2];
+var mrlee = m.split('/')[m.split('/').length -1];
 var player = new cplayer({
     element: document.getElementById('music'),
     playlist: [
