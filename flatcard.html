@@ -19,7 +19,6 @@
     <meta charset=utf-8>
 <script src="https://cdn.jsdelivr.net/npm/cplayer/dist/cplayer.min.js"></script>
 <script src="https://cdn.bootcss.com/hls.js/0.10.1/hls.js"></script>
-<script src="https://cdn.bootcss.com/shaka-player/2.5.0-beta/shaka-player.compiled.js"></script>
     <link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/FxckA/script@main/mrlee.jpg">
     <meta http-equiv=X-UA-Compatible content="IE=edge">
     <meta name=viewport content="width=device-width,initial-scale=1">
@@ -645,10 +644,6 @@ var setTimeFlag = 1;
 playbackRate: true,
 	    poster: 'https://cdn.jsdelivr.net/gh/FxckA/script@main/p.jpg',
 	    customType: {
-        mkv: function (video, url) {
-            shaka.polyfill.installAll();
-            var player = new shaka.Player(video);
-            player.load(url); },
 	m3u8: function (video, url) {
             var hls = new Hls();
             hls.loadSource(url);
