@@ -376,7 +376,7 @@
         <div class="list-container">
             <div class="list-header-container">
                 <div class="readme">
-                    <div class="customfile" id="foot-om">
+                    <div class="customfile" id="foot-om" style="text-align:center">
                         <!--FootomfContent-->
                     </div>
                 </div>
@@ -642,6 +642,12 @@ var setTimeFlag = 1;
             lang: 'zh-cn',
 playbackRate: true,
 	    poster: 'https://cdn.jsdelivr.net/gh/FxckA/script@main/p.jpg',
+	    customType: {
+        mpd: function (video, url) {
+            shaka.polyfill.installAll();
+            var player = new shaka.Player(video);
+            player.load(url); },
+        },
 moreVideoAttr: {
         playsInline: true,
         'webkit-playsinline': true,
@@ -651,7 +657,7 @@ moreVideoAttr: {
         preload: "auto",
     },
 icons: {
-        loading: '<img src="https://cdn.jsdelivr.net/gh/FxckA/script@main/h.gif">',
+        loading: '<img src="https://cdn.jsdelivr.net/gh/FxckA/script@main/github.gif">',
         state: '<img src="https://cdn.jsdelivr.net/gh/FxckA/script@main/state.png">',
     },
             subtitle: {
