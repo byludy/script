@@ -624,7 +624,6 @@ function createDplayers(videos) {
         } else {
             console.log('HOLA');
         }
-var setTimeFlag = 1;
     for (i = 0; i < videos.length; i++) {
         var subtitle = videos[i].replace(/\.[^\.]+?(\?|$)/, '.srt$1');
 	    console.log('by MrLee  github:https://github.com/fxcka');
@@ -663,8 +662,8 @@ icons: {
             },
 		
         });
-art.on('video:canplay', function () {
-    console.info('Happy!');
+art.on('ready', () => {
+	art.subtitle.show = false;
 });
     }
 }
