@@ -615,7 +615,7 @@
         callback
     );
 }
-
+var setTimeFlag = 1;
 function createDplayers(videos) {
         if ((navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i))) {
             
@@ -664,6 +664,22 @@ icons: {
 art.on('ready', () => {
 	art.subtitle.show = false;
 });
+art.on('video:timeupdate', function () {
+    var myvideo = document.getElementsByTagName("video")[0]
+    if(setTimeFlag == 1){
+    //获取localStorage中记录的currentTime值，并给currentTime属性进行赋值
+        if (localStorage.getItem('currentTime') != null) {
+            var time = localStorage.getItem('currentTime');
+            myvideo.currentTime = time;
+    
+        }
+    setTimeFlag = 2;
+    }
+    //获取当前播放位置的秒数，并设置localStorage
+     var currentTime = myvideo.currentTime;
+   localStorage.setItem('currentTime', currentTime);
+});
+
     }
 }
     addVideos(['<!--FileEncodeUrl-->']);
