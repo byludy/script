@@ -18,7 +18,6 @@
     <title><!--Title--></title>
     <meta charset=utf-8>
 <script src="https://cdn.jsdelivr.net/npm/cplayer/dist/cplayer.min.js"></script>
-<script src="https://cdn.bootcss.com/hls.js/0.10.1/hls.js"></script>
     <link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/FxckA/script@main/mrlee.jpg">
     <meta http-equiv=X-UA-Compatible content="IE=edge">
     <meta name=viewport content="width=device-width,initial-scale=1">
@@ -643,22 +642,11 @@ var setTimeFlag = 1;
 	    autoSize: true,
 	    backdrop: true,
             lang: 'zh-cn',
+	    whitelist: ['*'],
 playbackRate: true,
 	    poster: 'https://cdn.jsdelivr.net/gh/FxckA/script@main/p.jpg',
-	    customType: {
-	m3u8: function (video, url) {
-            var hls = new Hls();
-            hls.loadSource(url);
-            hls.attachMedia(video);
-        },
-        },
-moreVideoAttr: {
-        playsInline: true,
-        'webkit-playsinline': true,
-        'x5-video-player-type': 'h5',
-        'x5-video-player-fullscreen': true,
-        'x5-video-orientation': 'portraint',
-        preload: "auto",
+    moreVideoAttr: {
+        preload: 'auto',
     },
 icons: {
         loading: '<img src="https://cdn.jsdelivr.net/gh/FxckA/script/github.gif">',
