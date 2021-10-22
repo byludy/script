@@ -669,8 +669,8 @@ art.on('video:timeupdate', function () {
     var myvideo = document.getElementsByTagName("video")[0]
     if(setTimeFlag == 1){
     //获取localStorage中记录的currentTime值，并给currentTime属性进行赋值
-        if (localStorage.getItem('currentTime'+ '{$study->study_id}') != null) {
-            var time = localStorage.getItem('currentTime'+ '{$study->study_id}');
+        if (sessionStorage.getItem('currentTime') != null) {
+            var time = sessionStorage.getItem('currentTime');
             myvideo.currentTime = time;
     
         }
@@ -678,7 +678,7 @@ art.on('video:timeupdate', function () {
     }
     //获取当前播放位置的秒数，并设置localStorage
      var currentTime = myvideo.currentTime;
-   localStorage.setItem('currentTime'+ '{$study->study_id}', currentTime);
+   sessionStorage.setItem('currentTime', currentTime);
 });
 
     }
