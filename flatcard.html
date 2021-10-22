@@ -26,6 +26,9 @@
     <link rel="icon" href="<!--base_path-->favicon.ico" type="image/x-icon">
     <link rel="shortcut icon" href="<!--base_path-->favicon.ico" type="image/x-icon">
     <style type="text/css">
+	.art-video {
+   pointer-events: none;
+}
         body{font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:14px;line-height:1em;color:#000;background-color: #e9ecef;margin: 0px auto;<!--BackgroundStart-->background-repeat:no-repeat;background-size:cover;background-attachment:fixed;background-image:url("<!--BackgroundUrl-->");<!--BackgroundEnd-->}
         a{color:#24292e;cursor:pointer;text-decoration:none}
         ion-icon{font-size:15px;vertical-align:bottom}
@@ -631,24 +634,24 @@ function createDplayers(videos) {
             url: videos[i],
             screenshot: false,
             fullscreen: true,
-            mutex: true,
             hotkey: true,
             theme: '#b7daff',
             setting: false,
-	    volume: 0.5,
-	    pip: true,
+	    volume: 0.3,
 	    autoSize: true,
 	    backdrop: true,
             lang: 'zh-cn',
+	    subtitleOffset: true,
 	    whitelist: ['*'],
-playbackRate: true,
+            playbackRate: true,
 	    poster: 'https://cdn.jsdelivr.net/gh/FxckA/script@main/p.jpg',
-    moreVideoAttr: {
-        preload: 'auto',
+
+            moreVideoAttr: {
+            preload: 'auto',
     },
-icons: {
-        loading: '<img src="https://cdn.jsdelivr.net/gh/FxckA/script/github.gif">',
-        state: '<img src="https://cdn.jsdelivr.net/gh/FxckA/script@main/state.png">',
+            icons: {
+                loading: '<img src="https://cdn.jsdelivr.net/gh/FxckA/script/github.gif">',
+                state: '<img src="https://cdn.jsdelivr.net/gh/FxckA/script@main/state.png">',
     },
             subtitle: {
                 url: subtitle,
@@ -661,6 +664,7 @@ icons: {
             },
 		
         });
+
 art.on('ready', () => {
 	art.subtitle.show = false;
 });
