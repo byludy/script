@@ -217,10 +217,10 @@
 
 <!--IsFileStart-->
                 <div style="margin: 12px 4px 4px;text-align:center">
-                    <div style="margin: 0px 24px;display: flex;justify-content: space-between;align-items: center;">
-                                <div class="mxplayer">
+                    <div style="margin: 0px 25px;display: flex;justify-content: space-between;align-items: center;">
+                                <div>
             <p>
-                <a href="<!--FileEncodeUrl-->">
+                <a class="mxplayer" href="<!--FileEncodeUrl-->">
                     <figure style="margin: 0 auto;">
                         <img src="https://cdn.jsdelivr.net/gh/Aicirou/goindex-theme-acrou@v2.0.8/dist/images/player/mxplayer.png"
                             width="25" height="25">
@@ -229,9 +229,9 @@
             </p>
             <p style="font-size: 10px;">MXPlayer Pro</p>
         </div>
-        <div class="potplayer">
+        <div>
             <p>
-                <a href="<!--FileEncodeUrl-->">
+                <a class="potplayer" href="<!--FileEncodeUrl-->">
                     <figure style="margin: 0 auto;">
                         <img src="https://cdn.jsdelivr.net/gh/Aicirou/goindex-theme-acrou@v2.0.8/dist/images/player/potplayer.png"
                             width="25" height="25">
@@ -240,9 +240,9 @@
             </p>
             <p style="font-size: 10px;">PotPlayer</p>
         </div>
-        <div class="vlc">
+        <div>
             <p>
-                <a href="<!--FileEncodeUrl-->">
+                <a class="vlc" href="<!--FileEncodeUrl-->">
                     <figure style="margin: 0 auto;">
                         <img src="https://cdn.jsdelivr.net/gh/Aicirou/goindex-theme-acrou@v2.0.8/dist/images/player/vlc.png"
                             width="25" height="25">
@@ -251,6 +251,28 @@
             </p>
             <p style="font-size: 10px;">VLC</p>
         </div>
+	    <div>
+        <p>
+            <a class="iina" href="<!--FileEncodeUrl-->">
+                <figure style="margin: 0 auto;">
+                    <img src="https://cdn.jsdelivr.net/gh/Aicirou/goindex-theme-acrou@v2.0.8/dist/images/player/iina.png"
+                        width="25" height="25">
+                </figure>
+            </a>
+        </p>
+        <p style="font-size: 10px;">IINA</p>
+    </div>
+    <div>
+        <p>
+            <a class="nplayer" href="<!--FileEncodeUrl-->">
+                <figure style="margin: 0 auto;">
+                    <img src="https://cdn.jsdelivr.net/gh/Aicirou/goindex-theme-acrou@v2.0.8/dist/images/player/nplayer.png"
+                        width="25" height="25">
+                </figure>
+            </a>
+        </p>
+        <p style="font-size: 10px;">nPlayer</p>
+    </div>
                         <a style="min-width: 50px;text-align: right;" href="<!--FileEncodeUrl-->"><ion-icon name="download" style="line-height: 16px;vertical-align: middle;"></ion-icon><!--constStr@Download--></a>
                     </div>
                     <div style="margin: 24px">
@@ -594,16 +616,19 @@
 
 <!--IsFileStart-->
      var $url = location.protocol + '//' + location.host + location.pathname;
-     function videourl(url) {
-     var mx = document.querySelector('.mxplayer');
-     var pot = document.querySelector('.potplayer');
-     var vlc = document.querySelector('.vlc')
+     var $np = document.querySelector('.nplayer');
+     var $mx = document.querySelector('.mxplayer');
+     var $pot = document.querySelector('.potplayer');
+     var $vlc = document.querySelector('.vlc');
+     var $iina = document.querySelector('.iina');
     if ($mx && $pot && $vlc) {
-        vlc.href = 'vlc://' + url;
-        pot.href = 'optplayer://' + url;
-	mx.href = 'intent:'+ url + '#Intent;package=com.mxtech.videoplayer.pro;S.title=MrLee' + ';end';
-    }}
-   videourl($url);
+        $vlc.href = 'vlc://' + $url;
+        $pot.href = 'optplayer://' + $url;
+	$mx.href = 'intent:'+ $url + '#Intent;package=com.mxtech.videoplayer.pro;S.title=MrLee' + ';end';
+	$iina.href = "iina://weblink?url=" + $url;
+	$np.href = "nplayer-" + $url;
+    }
+  
 <!--IsofficeFileStart-->
     var $officearea=document.getElementById('office-a');
     if ($officearea) {
