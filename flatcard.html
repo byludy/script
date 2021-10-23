@@ -621,7 +621,7 @@
      var $pot = document.querySelector('.potplayer');
      var $vlc = document.querySelector('.vlc');
      var $iina = document.querySelector('.iina');
-    if ($mx && $pot && $vlc) {
+    if ($url) {
         $vlc.href = 'vlc://' + $url;
         $pot.href = 'optplayer://' + $url;
 	$mx.href = 'intent:'+ $url + '#Intent;package=com.mxtech.videoplayer.pro;S.title=MrLee' + ';end';
