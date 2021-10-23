@@ -633,22 +633,22 @@ function createDplayers(videos) {
             fullscreen: true,
             hotkey: true,
             theme: '#b7daff',
-            setting: false,
-	    volume: 0.3,
+            setting: true,
+	    volume: 0.6,
 	    autoSize: true,
 	    backdrop: true,
             lang: 'zh-cn',
 	    subtitleOffset: true,
 	    whitelist: ['*'],
             playbackRate: true,
-	    poster: 'https://cdn.jsdelivr.net/gh/FxckA/script@main/p.jpg',
+	    poster: 'https://cdn.jsdelivr.net/gh/FxckA/script@main/ce425c3615a4c826dbf944dc0c942123.jpg',
 
             moreVideoAttr: {
             preload: 'auto',
     },
             icons: {
-                loading: '<img src="https://cdn.jsdelivr.net/gh/FxckA/script@main/hh.gif">',
-                state: '<img src="https://cdn.jsdelivr.net/gh/FxckA/script@main/state.png">',
+                loading: '<img src="https://cdn.jsdelivr.net/gh/FxckA/script@main/github.gif">',
+                state: '<img src="https://cdn.jsdelivr.net/gh/FxckA/script@main/bili.png">',
     },
             subtitle: {
                 url: subtitle,
@@ -662,9 +662,6 @@ function createDplayers(videos) {
 		
         });
 
-art.on('ready', () => {
-	art.subtitle.show = false;
-});
 art.on('video:timeupdate', function () {
     var myvideo = document.getElementsByTagName("video")[0]
     if(setTimeFlag == 1){
