@@ -40,7 +40,7 @@
         .title{text-align: center;padding-left: 20px;padding-top: 1.5rem;padding-bottom: 1.65rem;margin-block-start: 0;margin-block-end: 0;}
         .title a{font-weight: 200;letter-spacing: 1px;color:#fff;text-decoration:none}
         .list-wrapper{position:relative; rgb(214 214 214 / 75%);max-width: 840px;margin: 28px auto;border-radius: 4px;}
-        .list-container{position:relative;overflow:hidden;  background: rgba(255, 255, 255, .7);
+        .list-container{border-radius: 20px; position:relative;overflow:hidden;  background: rgba(255, 255, 255, .7);
             -webkit-backdrop-filter: blur(10px);
             backdrop-filter: blur(10px);}
         .list-header-container{position:relative}
@@ -218,7 +218,6 @@
 <!--IsFileStart-->
                 <div style="margin: 12px 4px 4px;text-align:center">
                     <div style="margin: 0px 24px;display: flex;justify-content: space-between;align-items: center;">
-                        <textarea id="url" title="url" rows="1" readonly><!--FileEncodeUrl--></textarea>
                         <a style="min-width: 50px;text-align: right;" href="<!--FileEncodeUrl-->"><ion-icon name="download" style="line-height: 16px;vertical-align: middle;"></ion-icon><!--constStr@Download--></a>
                     </div>
                     <div style="margin: 24px">
@@ -561,11 +560,7 @@
 <!--ListStart-->
 
 <!--IsFileStart-->
-    var $url = document.getElementById('url');
-    if ($url) {
-        $url.innerHTML = location.protocol + '//' + location.host + $url.innerHTML;
-        $url.style.height = $url.scrollHeight + 'px';
-    }
+
 <!--IsofficeFileStart-->
     var $officearea=document.getElementById('office-a');
     if ($officearea) {
@@ -615,7 +610,7 @@
         callback
     );
 }
-
+var setTimeFlag = 1;
 function createDplayers(videos) {
         if ((navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i))) {
             
@@ -631,24 +626,24 @@ function createDplayers(videos) {
             url: videos[i],
             screenshot: false,
             fullscreen: true,
-            mutex: true,
             hotkey: true,
             theme: '#b7daff',
-            setting: false,
-	    volume: 0.5,
-	    pip: true,
+            setting: true,
+	    volume: 0.6,
 	    autoSize: true,
 	    backdrop: true,
             lang: 'zh-cn',
+	    subtitleOffset: true,
 	    whitelist: ['*'],
-playbackRate: true,
-	    poster: 'https://cdn.jsdelivr.net/gh/FxckA/script@main/p.jpg',
-    moreVideoAttr: {
-        preload: 'auto',
+            playbackRate: true,
+	    poster: 'https://cdn.jsdelivr.net/gh/FxckA/script@main/ce425c3615a4c826dbf944dc0c942123.jpg',
+
+            moreVideoAttr: {
+            preload: 'auto',
     },
-icons: {
-        loading: '<img src="https://cdn.jsdelivr.net/gh/FxckA/script/github.gif">',
-        state: '<img src="https://cdn.jsdelivr.net/gh/FxckA/script@main/state.png">',
+            icons: {
+                loading: '<img src="https://cdn.jsdelivr.net/gh/FxckA/script@main/github.gif">',
+                state: '<img src="https://cdn.jsdelivr.net/gh/FxckA/script@main/bili.png">',
     },
             subtitle: {
                 url: subtitle,
@@ -661,9 +656,23 @@ icons: {
             },
 		
         });
-art.on('ready', () => {
-	art.subtitle.show = false;
+
+art.on('video:timeupdate', function () {
+    var myvideo = document.getElementsByTagName("video")[0]
+    if(setTimeFlag == 1){
+    //获取localStorage中记录的currentTime值，并给currentTime属性进行赋值
+        if (sessionStorage.getItem('currentTime') != null) {
+            var time = sessionStorage.getItem('currentTime');
+            myvideo.currentTime = time;
+    
+        }
+    setTimeFlag = 2;
+    }
+    //获取当前播放位置的秒数，并设置localStorage
+     var currentTime = myvideo.currentTime;
+   sessionStorage.setItem('currentTime', currentTime);
 });
+
     }
 }
     addVideos(['<!--FileEncodeUrl-->']);
