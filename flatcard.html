@@ -18,7 +18,7 @@
     <title><!--Title--></title>
     <meta charset=utf-8>
 <script src="https://cdn.jsdelivr.net/npm/cplayer/dist/cplayer.min.js"></script>
-    <link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/FxckA/script@main/mrlee.jpg">
+    <link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/byludy/script@main/mrlee.jpg">
     <meta http-equiv=X-UA-Compatible content="IE=edge">
     <meta name=viewport content="width=device-width,initial-scale=1">
     <meta name="keywords" content="<!--Keywords-->">
@@ -510,7 +510,6 @@
         </div>
     </div>
 <!--LoginEnd-->
-    <div style="color: rgba(247,247,249,0);"><!--FootStr--></div>
 </body>
 
 <!--ListStart-->
@@ -612,70 +611,72 @@
 }
 var setTimeFlag = 1;
 function createDplayers(videos) {
-        if ((navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i))) {
-            
-		document.getElementById('video-a0').style.height=250+"px";
-        } else {
-            console.log('HOLA');
-        }
-    for (i = 0; i < videos.length; i++) {
-        var subtitle = videos[i].replace(/\.[^\.]+?(\?|$)/, '.srt$1');
-	    console.log('by MrLee  github:https://github.com/fxcka');
-        var art = new Artplayer({
-            container: '#video-a0',
-            url: videos[i],
-            screenshot: false,
-            fullscreen: true,
-            hotkey: true,
-            theme: '#b7daff',
-            setting: true,
-	    volume: 0.6,
-	    autoSize: true,
-	    backdrop: true,
-            lang: 'zh-cn',
-	    subtitleOffset: true,
-	    whitelist: ['*'],
-            playbackRate: true,
-	    poster: 'https://cdn.jsdelivr.net/gh/FxckA/script@main/ce425c3615a4c826dbf944dc0c942123.jpg',
+	if ((navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i))) {
 
-            moreVideoAttr: {
-            preload: 'auto',
-    },
-            icons: {
-                loading: '<img src="https://cdn.jsdelivr.net/gh/FxckA/script@main/github.gif">',
-                state: '<img src="https://cdn.jsdelivr.net/gh/FxckA/script@main/bili.png">',
-    },
-            subtitle: {
-                url: subtitle,
-                encoding: 'utf-8',
-                bilingual: true,
-                style: {
-                    color: '#fff',
-                    'font-size': '30px',
-                },
-            },
-		
-        });
+		document.getElementById('video-a0').style.height = 250 + "px";
+	} else {
+		console.log('HOLA');
+	}
+	for (i = 0; i < videos.length; i++) {
+		var subtitle = videos[i].replace(/\.[^\.]+?(\?|$)/, '.srt$1');
+		console.log('by MrLee  github:https://github.com/fxcka');
+		var art = new Artplayer({
+			container: '#video-a0',
+			url: videos[i],
+			screenshot: false,
+			pip: true,
+			fullscreen: true,
+			fullscreenWeb: true,
+			hotkey: true,
+			autoplay: false,
+			theme: '#b7daff',
+			setting: true,
+			autoSize: true,
+			backdrop: true,
+			lang: 'zh-cn',
+			subtitleOffset: true,
+			whitelist: ['*'],
+			playbackRate: true,
+			moreVideoAttr: {
+				preload: 'auto',
+			},
+			icons: {
+				loading: '<img src="https://cdn.jsdelivr.net/gh/byludy/script@main/github.gif">',
+				state: '<img src="https://cdn.jsdelivr.net/gh/byludy/script@main/bili.png">',
+			},
+			subtitle: {
+				url: subtitle,
+				encoding: 'utf-8',
+				bilingual: true,
+				style: {
+					color: '#fff',
+					'font-size': '30px',
+				},
+			},
 
-art.on('video:timeupdate', function () {
-    var myvideo = document.getElementsByTagName("video")[0]
-    if(setTimeFlag == 1){
-    //获取localStorage中记录的currentTime值，并给currentTime属性进行赋值
-        if (sessionStorage.getItem('currentTime') != null) {
-            var time = sessionStorage.getItem('currentTime');
-            myvideo.currentTime = time;
-    
-        }
-    setTimeFlag = 2;
-    }
-    //获取当前播放位置的秒数，并设置localStorage
-     var currentTime = myvideo.currentTime;
-   sessionStorage.setItem('currentTime', currentTime);
-});
+		});
 
-    }
+		art.on('video:timeupdate', function() {
+			var myvideo = document.getElementsByTagName("video")[0]
+			if (setTimeFlag == 1) {
+				//获取localStorage中记录的currentTime值，并给currentTime属性进行赋值
+				if (sessionStorage.getItem('currentTime') != null) {
+					var time = sessionStorage.getItem('currentTime');
+					myvideo.currentTime = time;
+
+				}
+				setTimeFlag = 2;
+			}
+			//获取当前播放位置的秒数，并设置localStorage
+			var currentTime = myvideo.currentTime;
+			sessionStorage.setItem('currentTime', currentTime);
+		});
+
+	}
 }
-    addVideos(['<!--FileEncodeUrl-->']);
+
+addVideos(['<!--FileEncodeUrl-->']);
+
 <!--IsvideoFileEnd-->
 <!--IsmusicFileStart-->
 function Music(m){
@@ -687,7 +688,7 @@ var player = new cplayer({
     playlist: [
       {
         src: m,
-        poster: 'https://cdn.jsdelivr.net/gh/FxckA/script@main/h.gif',
+        poster: 'https://cdn.jsdelivr.net/gh/byludy/script@main/h.gif',
         name: mrlee,
   }]
 	    });};
